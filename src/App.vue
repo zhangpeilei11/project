@@ -1,24 +1,26 @@
 <template>
-    <div>
+    <div class="content">
         <mt-header fixed title="固定在顶部"></mt-header>
-        <input type="button" @click="show" style="margin:80px" value="123">
+        <transition mode="out-in">
+            <router-view></router-view>       
+        </transition>
         <nav class="mui-bar mui-bar-tab">
-			<a class="mui-tab-item mui-active" href="#tabbar">
+			<router-link class="mui-tab-item" to="/home">
 				<span class="glyphicon glyphicon-home"></span>
 				<span class="mui-tab-label cal">首页</span>
-			</a>
-			<a class="mui-tab-item" href="#tabbar-with-chat">
+			</router-link>
+			<router-link class="mui-tab-item"  to="/member">
 				<span class="glyphicon glyphicon-user"></span>
 				<span class="mui-tab-label cal">会员</span>
-			</a>
-			<a class="mui-tab-item" href="#tabbar-with-contact">
+			</router-link>
+			<router-link class="mui-tab-item" to="/car">
 				<span class="glyphicon glyphicon-shopping-cart car"></span>
 				<span class="mui-tab-label cal">购物车</span>
-			</a>
-			<a class="mui-tab-item" href="#tabbar-with-map">
+			</router-link>
+			<router-link class="mui-tab-item" to="/search">
 				<span class="glyphicon glyphicon-search"></span>
 				<span class="mui-tab-label cal">搜索</span>
-			</a>
+			</router-link>
 		</nav>
      
     </div>
@@ -44,6 +46,23 @@ export default {
 }
 </script>
 <style  scoped>
+    .v-enter{
+        opacity: 0;
+        transform: translateX(100%)
+    }
+    .v-leave-to{
+        opacity: 0;
+        transform: translateX(-100%);
+        position: absolute;
+    }
+    .v-enter-active,
+    .v-leave-active{
+        transition: all 0.1s ease;
+    }
+    .content{
+        padding-top: 40px;
+        overflow-x:hidden; 
+    }
     .mui-bar-tab.mui-tab-item.glyphicon{
         top: 3px;
         width: 24px;

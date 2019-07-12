@@ -1,4 +1,14 @@
-li{
-  list-style: none;
+ul {
+  padding: 0;
+  margin: 0;
 }
-* { touch-action: none; } 
+body{
+  background-color: #fff;
+}
+html{
+  background-color: #fff;
+}
+h1{
+  margin: 0;
+  padding: 0;
+}
