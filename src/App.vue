@@ -62,6 +62,7 @@ export default {
     .content{
         padding-top: 40px;
         overflow-x:hidden; 
+        padding-bottom: 50px;
     }
     .mui-bar-tab.mui-tab-item.glyphicon{
         top: 3px;
