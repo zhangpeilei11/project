@@ -9,7 +9,14 @@
                     "style": true
                 }
             ]
-        ]
-    ],
-    "ignore":["./src/lib/mui/js/mui.js"]
+        ],
+        ],
+    "ignore":[
+        "./src/lib/mui/js/mui.min.js",
+        "./src/lib/mui/js/mui.zoom.js",
+        "./src/lib/mui/js/mui.previewimage.js",
+    
+    ]
+    //或者使用babel-plugin-transform-remove-strict-mode下载包
+    //在plugins中加transform-remove-strict-mode
 }

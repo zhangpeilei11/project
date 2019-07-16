@@ -1,0 +1,14 @@
+div[itemscope="itemscope"]{
+    display: flex;
+    flex-wrap: wrap;
+    // justify-content: space-between;
+    figure {
+        flex: 0 0 33%;
+        padding: 5px;
+        box-shadow: 0 0 8px #999;
+        img{
+            width: 100%;
+            
+        }
+    }
+}
