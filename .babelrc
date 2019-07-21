@@ -13,6 +13,7 @@
         ],
     "ignore":[
         "./src/lib/mui/js/mui.min.js",
+        "./src/lib/mui/js/mui.js",
         "./src/lib/mui/js/mui.zoom.js",
         "./src/lib/mui/js/mui.previewimage.js",
     

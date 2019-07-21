@@ -27,7 +27,7 @@
             市场价：<del>￥{{ info.market_price }}</del>&nbsp;&nbsp;销售价：<span class="now_price">￥{{ info.sell_price }}</span>
           </p>
           <p>购买数量：
-              <numbox :max="info.stock_quantity" @num_box="num"></numbox>
+              <numbox :max="info.stock_quantity"></numbox>
           </p>
           <p class="box_add">
             <mt-button type="primary" size="small">立即购买</mt-button>
@@ -151,16 +151,13 @@ export default {
         comment(){
             this.$router.push("/home/comment/"+this.id)
         },
-        num(data){
-            this.selectedCount = data
-        },
         add(){
             this.ballFlag = !this.ballFlag;
-            this.$emit("parentadd",this.selectedCount)
+            this.$store.commit("add");
+            this.$store.state.car.push({id:this.id}) 
+            // console.log(this.$store.state)           
         },
-        num(data){
-            this.selectedCount = data
-        }
+       
 
     },
     components:{

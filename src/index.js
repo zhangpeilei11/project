@@ -4,7 +4,6 @@ import VueRouter from "vue-router"
 Vue.use(VueRouter)
 import router from "./router.js"
 import "./lib/mui/css/mui.min.css"
-// import "./lib/mui/js/mui.js"
 import "bootstrap/dist/css/bootstrap.css"
 import "./css/index.css"
 import "./css/preview.scss"
@@ -63,6 +62,7 @@ import "../node_modules/mint-ui/lib/style.css"
 Vue.filter("timeFormat",(time,pattern)=>{
     return moment(time).format(pattern)
 })
+
 // filters:{
 //     timeFormat(time,pattern){
 //         var dt = new Date(time);
@@ -79,10 +79,61 @@ Vue.filter("timeFormat",(time,pattern)=>{
 //         }
 //     }
 // },
+import Vuex from "vuex";
+Vue.use(Vuex);
+var store = new Vuex.Store({
+    state:{
+        num:0,
+        regulation:1,
+        car:[],
+        carnum:[],
+        total:0,
+        counts:0,
+    },
+    mutations:{
+        add(state,count){
+            state.num = parseInt(state.num ) + parseInt(state.regulation)
+        },
+        caradd(state){
+            state.num = 0;
+            state.car.forEach(item => {
+            state.num+=item.cou 
+            // console.log(state.num)
+
+            // console.log(item.cou)
+            });
+        },
+        carlist(state,data){
+            state.car = data;
+            data.forEach(item => {
+                state.num+=item.cou 
+            });
+        },
+        addcar(state,id){
+            state.car.forEach(item=>{
+                if(item.id==id){
+                    item.cou++;
+                    store.commit("caradd")
+                }
+            })
+        },
+        subtract(state,id){
+            state.car.forEach(item=>{
+                if(item.id==id){
+                    item.cou = item.cou - 1;
+                    store.commit("caradd")
+                }
+            })
+        }
+    }
+}) 
+
+
 var vm = new Vue({
     el:"#app",
     router,
     render(c){
         return c(App)
-    }
+    },
+    store:store,
 })

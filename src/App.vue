@@ -4,9 +4,10 @@
             <a href="javascript:history.go(-1)" slot="left" :style = "this.$route.path=='/home' ? 'display:none' : 'display:block'">
                 <mt-button icon="back">返回</mt-button>
             </a>
+            
         </mt-header>
         <transition mode="out-in">
-            <router-view @parentadd="add"></router-view>       
+            <router-view></router-view>       
         </transition>
         <nav class="mui-bar mui-bar-tab">
 			<router-link class="mui-tab-item1" to="/home">
@@ -19,9 +20,9 @@
 			</router-link>
 			<router-link class="mui-tab-item1" to="/car" id="badge">
 				<span class="glyphicon glyphicon-shopping-cart car">
-                    <span class="mui-badge" :style="num==0?'display:none':'display:block'">{{num}}</span>
+                    <span class="mui-badge">{{$store.state.counts}}</span>
                 </span>
-				<span class="mui-tab-label cal">购物车</span>
+				<span class="mui-tab-label cal" @click= "show">购物车</span>
 			</router-link>
 			<router-link class="mui-tab-item1" to="/search">
 				<span class="glyphicon glyphicon-search"></span>
@@ -37,23 +38,20 @@ export default {
     data(){
         return {
             route:"",
-            num:0
         }
         
     },
     methods: {
         show(){
-            Toast({
-                message:"哈哈",
-                iconClass:"mui-icon mui-icon-home"
-            })
+            // Toast({
+            //     message:"哈哈",
+            //     iconClass:"mui-icon mui-icon-home"
+            // })
+            console.log(this.$store.state.counts);
+            // console.log(this.num);
         },
-        add(data){
-            console.log(data);
-            this.num = this.num +data
-        }
- 
     },
+   
     
 }
 </script>

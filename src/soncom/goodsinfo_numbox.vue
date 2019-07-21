@@ -3,7 +3,7 @@
 <!-- 我们可以 使用 watch 属性监听，来 监听 父组件传递过来的 max 值，不管 watch 会被触发几次，但是，最后一次，肯定是一个 合法的 max 数值 -->
   <div class="mui-numbox" data-numbox-min='1'>
     <button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
-    <input id="test" class="mui-input-numbox" type="number" value="1" @change="countChanged" ref="numbox" />
+    <input id="test" class="mui-input-numbox" type="number" value=1 ref="numbox" @change="countChanged"/>
     <button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
   </div>
 
@@ -24,8 +24,8 @@ export default {
     countChanged() {
       // 每当 文本框的数据被修改的时候，立即把 最新的数据，通过事件调用，传递给父组件
       // console.log(this.$refs.numbox.value);
-      this.$emit("num_box", parseInt(this.$refs.numbox.value));
-    }
+       this.$store.state.regulation = this.$refs.numbox.value
+    },
   },
   props: ["max"],
   watch: {

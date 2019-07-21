@@ -2,7 +2,7 @@
     <div class="mui-content mui-row mui-fullscreen">
 			<div class="mui-col-xs-3" @click="show">
 				<div ref="segmentedControls" class="mui-segmented-control mui-segmented-control-inverted mui-segmented-control-vertical">
-                    <a class="mui-control-item" data-index="' + (i - 1) + '" href="#content' + i + '"></a>
+                    <a class="mui-control-item" data-index="' + (i - 1) + '" href="#content' + i + '">选项' + i + '</a>
                 </div>
 			</div>
 			<div ref="segmentedControlContents" class="mui-col-xs-9" style="border-left: 1px solid #c8c7cc;">
@@ -15,20 +15,18 @@ export default {
     data(){
         return {
             controls:"",
-            contents:"",
-            list:[]
+            contents:""
         }
     },
     methods: {
         show(){
-           
             this.controls = this.$refs.segmentedControls
             this.contents = this.$refs.segmentedControlContents
             console.log(this.$refs.segmentedControls.outerHTML)
             // console.log(this.$refs.segmentedControlContents.outerHTML)
-            // if(this.controls!==null){
-            //     this.controls = `<div></div>`
-            // }
+            if(this.controls==null){
+                this.controls = `<div></div>`
+            }
             var html = [];
 			var i = 1,
 				j = 1,
@@ -141,24 +139,16 @@ export default {
 					return false;
 				});
 			})(this.controls,this.contents);
-        },
-        getlist(){
-        this.$http.get("api/getprodlist").then(result=>{
-            this.list = result.body.message
-            // console.log(result.body)
-            
-        })
-    }
+        }
     },
-    
-    created(){
-        this.getlist()
-    },
-    mouted(){
-            this.show()
+    // created(){
+        
+    // },
+    // mouted(){
+    //         this.show()
           
 			
-    },
+    // },
     // updated() {
     //         this.show()
         
@@ -169,9 +159,9 @@ export default {
         }
     },
     watch:{
-        // aaa(){
-        //     console.log(222333)
-        // },
+        aaa(){
+            console.log(222333)
+        },
         "controls":()=>{
             console.log(111)
         }
